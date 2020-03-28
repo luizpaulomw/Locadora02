@@ -8,67 +8,49 @@ namespace View
 {
     public class FilmeView
     {
+        public static void InserirFilme()
+        {
+            Console.WriteLine(" sobre o filme: ");
+            Console.WriteLine(" titulo: ");
+            String titulo = Console.ReadLine();
+            Console.WriteLine(" data de lançamento (dd/mm/yyyy): ");
+            String dataLanc = Console.ReadLine();
+            Console.WriteLine(" sinopse: ");
+            String sinopse = Console.ReadLine();
+            Console.WriteLine(" valor do filme: ");
+            double valorLoc = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine(" estoque: ");
+            int estoque = Convert.ToInt32(Console.ReadLine());
 
-              public static void ConsultarFilmeLINQ()
-            {
-                Console.WriteLine ("Digite o ID do Filme: ");
-                int idFilme = Convert.ToInt32(Console.ReadLine());
-                IEnumerable query =
-                from filme in FilmeController.GetFilmes()
-                where filme.IdFilme == idFilme
-                select filme.Titulo;
-
-                foreach (string filmes in query)
-                    {
-                        Console.WriteLine(filmes);
-                    }
-            }
-
-
-        public void addFilme(int idFilme, string titulo, string dataLanc, string sinopse, double valorLoc, int estoque)  
-            {
-                FilmeController.addFilme(idFilme, titulo, dataLanc, sinopse, valorLoc, estoque);
-            }
+            FilmeController.InserirFilme(titulo, dataLanc, sinopse, valorLoc);
+        }
 
         public void getFilme(FilmeModels filmes)
-            {
-                Console.Write(filmes);
-            }
+        {
+            Console.Write(filmes);
+        }
 
-      
         public static void ListarFilmes()
-            {
-                Console.WriteLine ("    Filmes  ");
-                 FilmeController.GetFilmes().ForEach(filme => Console.WriteLine(filme));
-            }  
+        {
+            Console.WriteLine("    Filmes  ");
+            FilmeController.GetFilmes().ForEach(filme => Console.WriteLine(filme));
+        }
 
-   
-  
-
-            
+        // Consulta por LinQ
         public static void ConsultarFilme()
         {
-            FilmeModels filme;
-            do
-            {
-                Console.WriteLine("Digite o ID do Filme: ");
-                int idFilme = Convert.ToInt32(Console.ReadLine());
-                filme = null;
+            Console.WriteLine("Digite o ID do Filme: ");
+            int idFilme = Convert.ToInt32(Console.ReadLine());
 
-                try
-                {
-                    filme = FilmeController.GetFilme(idFilme);
-                    if (filme == null)
-                    {
-                        Console.WriteLine("FILME NÃOLOCALIZADO!");
-                    }
-                }
-                catch
-                {
-                    Console.WriteLine("FILME NÃOLOCALIZADO!");
-                }
-            } while (filme == null);
-            Console.WriteLine(filme.ToString());
-        }      
+            IEnumerable query =
+            from filme in FilmeController.GetFilmes()
+            where filme.IdFilme == idFilme
+            select filme.ToString();
+
+            foreach (string filmes in query)
+            {
+                Console.WriteLine(filmes.ToString());
+            }
+        }
     }
 }

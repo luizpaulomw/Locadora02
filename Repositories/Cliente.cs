@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using Models;
 
 namespace Repositories {
-    public static class RepositoryCliente {
-        private static readonly List<Cliente> clientes = new List<Cliente>();
+    public static class ClienteRepositories {
+        public static readonly List<ClienteModels> clientes = new List<ClienteModels>();
 
-        public static List<Cliente> Clientes(){
+        public static List<ClienteModels> Clientes(){
             return clientes;
         }
 
-        public static void AddCliente(Cliente cliente){
+        public static void AddCliente(ClienteModels cliente){
             clientes.Add(cliente);
         }
 

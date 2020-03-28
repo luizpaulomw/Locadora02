@@ -35,16 +35,14 @@ namespace csharp_mvc_blockbuster
                         ClienteView.InserirCliente ();
                         break;
                     case 2:
-                        FilmeView.InserirFilme ();
+                        // FilmeView.InserirFilme ();
                         break;
                     case 3:
                         LocacaoView.InserirLocacao ();
-                        break;
-                
+                        break;                
                     case 4:
                         ClienteView.ConsultarCliente ();
-                        break;
-                
+                        break;                
                     case 5:
                         FilmeView.ConsultarFilme ();
                         break;

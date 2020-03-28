@@ -3,19 +3,24 @@ using System.Collections.Generic;
 using Models;
 
 namespace Repositories {
-    public static class Filmes {
-        private static readonly List<Filme> filmes = new List<Filme>();
+    public static class FilmeRepositories {
+        public static readonly List<FilmeModels> filmes = new List<FilmeModels>();
 
-        public static List<Filme> Filmes(){
+        public static List<FilmeModels> FilmesModels(){
             return filmes;
         }
 
-        public static void AddFilme(Filme Filme){
+        public static void AddFilme(FilmeModels Filme){
             filmes.Add(Filme);
         }
 
         public static int GetId(){
             return filmes.Count + 1;
+        }
+
+        public static List<FilmeModels> Filmes()
+        {
+            return filmes;
         }
     }
 }
